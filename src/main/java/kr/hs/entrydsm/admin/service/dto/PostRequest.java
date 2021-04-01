@@ -1,15 +1,24 @@
 package kr.hs.entrydsm.admin.service.dto;
 
-import kr.hs.entrydsm.admin.entity.PostType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+
+import javax.validation.constraints.NotEmpty;
 
 @Getter
 @AllArgsConstructor
 public class PostRequest {
+    @NotEmpty
     private String title;
+
     private String author;
+
+    @NotEmpty
     private String description;
+
+    @NotEmpty
     private String content;
-    private PostType type;
+
+    @NotEmpty
+    private String type;
 }

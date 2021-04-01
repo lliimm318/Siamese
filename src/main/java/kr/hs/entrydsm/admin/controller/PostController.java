@@ -2,12 +2,15 @@ package kr.hs.entrydsm.admin.controller;
 
 import kr.hs.entrydsm.admin.service.PostService;
 import kr.hs.entrydsm.admin.service.dto.PostRequest;
+import kr.hs.entrydsm.common.security.JWTRequired;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.method.HandlerMethod;
 
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
+@JWTRequired
 @RestController
 @RequestMapping("/post")
 public class PostController {
@@ -18,13 +21,13 @@ public class PostController {
         postService.createPost(postRequest);
     }
 
-    @DeleteMapping
-    public void deletePost(@PathVariable int postId) {
+    @DeleteMapping("/{postId}")
+    public void deletePost(@PathVariable long postId) {
         postService.deletePost(postId);
     }
 
-    @PutMapping
-    public void updatePost(@PathVariable int postId, @Valid @RequestBody PostRequest postRequest) {
+    @PutMapping("/{postId}")
+    public void updatePost(@PathVariable long postId, @Valid @RequestBody PostRequest postRequest) {
         postService.updatePost(postId, postRequest);
     }
 }

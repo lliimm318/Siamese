@@ -2,12 +2,14 @@ package kr.hs.entrydsm.admin.controller;
 
 import kr.hs.entrydsm.admin.service.BannerService;
 import kr.hs.entrydsm.admin.service.dto.BannerRequest;
+import kr.hs.entrydsm.common.security.JWTRequired;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
+@JWTRequired
 @RestController
 @RequestMapping("/banner")
 public class BannerController {
@@ -18,7 +20,7 @@ public class BannerController {
         bannerService.createBanner(bannerRequest);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{imageId}")
     public void deleteBanner(@PathVariable int imageId) {
         bannerService.deleteBanner(imageId);
     }

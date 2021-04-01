@@ -12,7 +12,7 @@ import javax.persistence.Id;
 @Entity(name = "tbl_club")
 public class Club {
     @Id
-    private long id;
+    private String id;
 
     private String password;
 

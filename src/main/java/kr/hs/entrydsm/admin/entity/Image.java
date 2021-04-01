@@ -1,18 +1,24 @@
 package kr.hs.entrydsm.admin.entity;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "tbl_image")
 public class Image {
     @Id
     private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "club_id")
+    private Club club;
 
     private String path;
 }

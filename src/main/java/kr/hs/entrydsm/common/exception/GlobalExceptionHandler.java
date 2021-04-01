@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected ResponseEntity<ServiceException> handleRequestException(MethodArgumentNotValidException e) {
-        return new ResponseEntity<>(new ServiceException(HttpStatus.BAD_REQUEST.value(), "Invalid Parameters"),
-                                    HttpStatus.BAD_REQUEST);
+    protected ResponseEntity<Object> handleRequestException(MethodArgumentNotValidException e) {
+        return new ResponseEntity<>("Invalid Parameters", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(ServiceException.class)
-    protected ResponseEntity<ServiceException> handleServiceException(ServiceException e) {
-        return new ResponseEntity<>(e, e.getHttpStatus());
+    protected ResponseEntity<Object> handleServiceException(ServiceException e) {
+        return new ResponseEntity<>(e.getMessage(), e.getHttpStatus());
     }
 }

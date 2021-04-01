@@ -4,6 +4,7 @@ import kr.hs.entrydsm.admin.service.ClubService;
 import kr.hs.entrydsm.admin.service.dto.LoginRequest;
 import kr.hs.entrydsm.admin.service.dto.LoginResponse;
 import kr.hs.entrydsm.admin.service.dto.RefreshResponse;
+import kr.hs.entrydsm.common.security.RefreshRequired;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,9 @@ public class ClubController {
         return clubService.login(loginRequest);
     }
 
+    @RefreshRequired
     @PutMapping("/refresh")
-    public RefreshResponse refresh(@RequestHeader("X-Refresh-Token") String refreshToken) {
-        return clubService.refresh(refreshToken);
+    public RefreshResponse refresh() {
+        return clubService.refresh();
     }
 }

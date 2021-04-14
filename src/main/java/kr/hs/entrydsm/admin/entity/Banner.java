@@ -6,10 +6,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
 
+import javax.persistence.GeneratedValue;
+
 @Getter
 @Builder
 @RedisHash("banner")
 public class Banner {
+    @GeneratedValue
     @Id
     private long imageId;
 

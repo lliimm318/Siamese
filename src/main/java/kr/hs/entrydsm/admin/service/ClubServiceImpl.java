@@ -2,6 +2,7 @@ package kr.hs.entrydsm.admin.service;
 
 import kr.hs.entrydsm.admin.entity.Club;
 import kr.hs.entrydsm.admin.entity.ClubRepository;
+import kr.hs.entrydsm.admin.service.dto.ClubResponse;
 import kr.hs.entrydsm.admin.service.dto.LoginRequest;
 import kr.hs.entrydsm.admin.service.dto.LoginResponse;
 import kr.hs.entrydsm.admin.service.dto.RefreshResponse;
@@ -36,5 +37,10 @@ public class ClubServiceImpl implements ClubService {
     @Override
     public RefreshResponse refresh() {
         return new RefreshResponse(jwtResolver.generateAccessToken(AuthMiddleware.currentClub().getId()));
+    }
+
+    @Override
+    public ClubResponse getClub() {
+        return ClubResponse.builder().name(AuthMiddleware.currentClub().getName()).build();
     }
 }

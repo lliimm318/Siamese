@@ -2,10 +2,7 @@ package kr.hs.entrydsm.admin.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Getter
 @Builder
@@ -13,6 +10,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 @Entity(name = "tbl_image")
 public class Image {
+    @GeneratedValue
     @Id
     private long id;
 

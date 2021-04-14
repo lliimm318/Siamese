@@ -1,6 +1,6 @@
 package kr.hs.entrydsm.admin.controller;
 
-import kr.hs.entrydsm.admin.service.ImageService;
+import kr.hs.entrydsm.admin.service.AdminImageService;
 import kr.hs.entrydsm.admin.service.dto.ImageResponse;
 import kr.hs.entrydsm.common.security.JWTRequired;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/image")
 public class ImageController {
-    private final ImageService imageService;
+    private final AdminImageService imageService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

@@ -4,7 +4,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import kr.hs.entrydsm.admin.entity.Image;
-import kr.hs.entrydsm.admin.entity.ImageRepository;
+import kr.hs.entrydsm.admin.entity.AdminImageRepository;
 import kr.hs.entrydsm.admin.service.dto.ImageResponse;
 import kr.hs.entrydsm.admin.service.exception.InvalidFileExtensionException;
 import kr.hs.entrydsm.common.exception.BadRequestException;
@@ -22,8 +22,8 @@ import java.util.UUID;
 
 @RequiredArgsConstructor
 @Service
-public class ImageServiceImpl implements ImageService {
-    private final ImageRepository imageRepository;
+public class AdminImageServiceImpl implements AdminImageService {
+    private final AdminImageRepository adminImageRepository;
 
     private final AmazonS3 s3;
 
@@ -45,7 +45,7 @@ public class ImageServiceImpl implements ImageService {
         s3.putObject(new PutObjectRequest(bucket, "images/" + filename, parsedFile.getInputStream(), null)
                 .withCannedAcl(CannedAccessControlList.AuthenticatedRead));
 
-        Image image = imageRepository.save(Image.builder()
+        Image image = adminImageRepository.save(Image.builder()
                 .club(AuthMiddleware.currentClub())
                 .path("https://" + bucket + "/images/" + filename)
                 .build());

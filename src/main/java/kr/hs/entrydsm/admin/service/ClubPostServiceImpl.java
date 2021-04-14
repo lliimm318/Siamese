@@ -1,7 +1,7 @@
 package kr.hs.entrydsm.admin.service;
 
 import kr.hs.entrydsm.admin.entity.Post;
-import kr.hs.entrydsm.admin.entity.PostRepository;
+import kr.hs.entrydsm.admin.entity.ClubPostRepository;
 import kr.hs.entrydsm.admin.entity.PostType;
 import kr.hs.entrydsm.admin.service.dto.PostPreviewResponse;
 import kr.hs.entrydsm.admin.service.dto.PostRequest;
@@ -16,40 +16,38 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
-public class PostServiceImpl implements PostService {
-    private final PostRepository postRepository;
+public class ClubPostServiceImpl implements ClubPostService {
+    private final ClubPostRepository clubPostRepository;
 
     @Override
     public void createPost(PostRequest postRequest) {
-        postRepository.save(requestToeEntity(postRequest));
+        clubPostRepository.save(requestToeEntity(postRequest));
     }
 
     @Override
     @Transactional
     public void deletePost(long postId) {
-        Post post = postRepository.findById(postId).orElseThrow(PostNotFoundException::new);
+        Post post = clubPostRepository.findById(postId).orElseThrow(PostNotFoundException::new);
         if (!AuthMiddleware.currentClub().getId().equals(post.getClub().getId())) { throw new ForbiddenException(); }
-        postRepository.deleteById(post.getId());
+        clubPostRepository.deleteById(post.getId());
     }
 
     @Override
     public void updatePost(long postId, PostRequest postRequest) {
         Post post = requestToeEntity(postRequest);
-        postRepository.findById(postId)
-                .map(p -> postRepository.save(p.update(post)))
+        clubPostRepository.findById(postId)
+                .map(p -> clubPostRepository.save(p.update(post)))
                 .orElseThrow(PostNotFoundException::new);
     }
 
     @Override
     public PostsResponse getPosts() {
-        List<PostPreviewResponse> posts = postRepository.findAllByClub(AuthMiddleware.currentClub()).stream().map(post -> {
+        List<PostPreviewResponse> posts = clubPostRepository.findAllByClub(AuthMiddleware.currentClub()).stream().map(post -> {
             return PostPreviewResponse.builder()
                     .postId(post.getId())
                     .author(post.getAuthor())
@@ -66,7 +64,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostResponse getPost(long postId) {
-        Post post = postRepository.findById(postId).orElseThrow(PostNotFoundException::new);
+        Post post = clubPostRepository.findById(postId).orElseThrow(PostNotFoundException::new);
         return PostResponse.builder()
                 .author(post.getAuthor())
                 .title(post.getTitle())

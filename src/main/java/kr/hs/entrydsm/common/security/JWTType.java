@@ -10,8 +10,8 @@ import java.util.Date;
 @Getter
 @RequiredArgsConstructor
 public enum JWTType {
-    CLUB_ACCESS_TOKEN(new Date(System.currentTimeMillis() + Hours.ONE.toStandardSeconds().getSeconds() * 1000)),
-    CLUB_REFRESH_TOKEN(new Date(System.currentTimeMillis() + Weeks.TWO.toStandardSeconds().getSeconds() * 1000));
+    CLUB_ACCESS_TOKEN(Hours.ONE.toStandardSeconds().getSeconds() * 1000),
+    CLUB_REFRESH_TOKEN(Weeks.TWO.toStandardSeconds().getSeconds() * 1000);
 
-    private final Date expiration;
+    private final long expiration;
 }

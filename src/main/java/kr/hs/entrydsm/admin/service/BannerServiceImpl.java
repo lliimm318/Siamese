@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class BannerServiceImpl implements BannerService {
-    private final ImageRepository imageRepository;
+    private final AdminImageRepository adminImageRepository;
     private final BannerRepository bannerRepository;
 
     @Override
     public void createBanner(BannerRequest bannerRequest) {
-        Image image = imageRepository.findById(bannerRequest.getImageId()).orElseThrow(ImageNotFoundException::new);
+        Image image = adminImageRepository.findById(bannerRequest.getImageId()).orElseThrow(ImageNotFoundException::new);
         if (bannerRepository.findById(image.getId()).isPresent()) { throw new BannerExistException(); }
         Club currentClub = AuthMiddleware.currentClub();
         if (!currentClub.getId().equals(image.getClub().getId())) { throw new ForbiddenException(); }
@@ -31,7 +31,7 @@ public class BannerServiceImpl implements BannerService {
     @Override
     public void deleteBanner(long imageId) {
         Banner banner = bannerRepository.findById(imageId).orElseThrow(BannerNotFoundException::new);
-        Image image = imageRepository.findById(imageId).orElseThrow(ImageNotFoundException::new);
+        Image image = adminImageRepository.findById(imageId).orElseThrow(ImageNotFoundException::new);
         Club currentClub = AuthMiddleware.currentClub();
         if (!image.getClub().getId().equals(currentClub.getId())) { throw new ForbiddenException(); }
         bannerRepository.delete(banner);

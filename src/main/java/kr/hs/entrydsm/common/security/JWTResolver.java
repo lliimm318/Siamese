@@ -1,8 +1,6 @@
 package kr.hs.entrydsm.common.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import kr.hs.entrydsm.common.exception.TokenInvalidException;
 import kr.hs.entrydsm.common.exception.TokenTypeInvalidException;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +25,7 @@ public class JWTResolver {
 
     private String JWTBuild(JWTType type, String clubId) {
         return Jwts.builder().setIssuedAt(new Date())
-                             .setExpiration(type.getExpiration())
+                             .setExpiration(new Date(System.currentTimeMillis() + type.getExpiration()))
                              .setSubject(clubId)
                              .claim("type", type)
                              .signWith(SignatureAlgorithm.HS256, secretKey)

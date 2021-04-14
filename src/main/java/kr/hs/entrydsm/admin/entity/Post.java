@@ -11,8 +11,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity(name = "tbl_post")
 public class Post {
+    @GeneratedValue
     @Id
     private long id;
+
+    private long imageId;
 
     @ManyToOne
     @JoinColumn(name = "club_id")

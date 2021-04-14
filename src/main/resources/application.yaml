@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${DATABASE_HOST:jdbc:mysql://localhost:3306/init?serverTimezone=Asia/Seoul}
     username: ${DATABASE_USERNAME:root}
-    password: ${DATABASE_USERNAME:default}
+    password: ${DATABASE_PASSWORD:default}
   redis:
     host: ${REDIS_HOST:localhost}
   jpa:

@@ -4,6 +4,7 @@ import kr.hs.entrydsm.admin.service.ImageService;
 import kr.hs.entrydsm.admin.service.dto.ImageResponse;
 import kr.hs.entrydsm.common.security.JWTRequired;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class ImageController {
     private final ImageService imageService;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ImageResponse createImage(@Nullable @RequestParam MultipartFile file) throws IOException {
         return imageService.createImage(Optional.ofNullable(file));

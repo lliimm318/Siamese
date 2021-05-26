@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Getter
-@Entity
+@Entity(name = "tbl_like")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,11 +23,5 @@ public class Like {
     private String ip;
 
     private Integer postId;
-
-    @ManyToOne
-    @JsonManagedReference
-    @JoinColumn(name = "post_id")
-    private Post post;
-
 
 }

@@ -32,7 +32,7 @@ public class Post {
 
     private PostType postType;
 
-    @OneToMany
+    @OneToMany(mappedBy = "postId")
     @JsonBackReference
     private List<Like> likes;
 

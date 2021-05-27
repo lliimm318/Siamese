@@ -6,6 +6,7 @@ spring:
     password: ${DATABASE_PASSWORD:default}
   redis:
     host: ${REDIS_HOST:localhost}
+    password: ${REDIS_PASSWORD:default}
   jpa:
     hibernate:
       ddl-auto: none

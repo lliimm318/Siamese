@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
-@Service
+@Service("adminPostService")
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
 

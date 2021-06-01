@@ -7,13 +7,13 @@ import kr.hs.entrydsm.main.service.post.PostDetailService;
 import kr.hs.entrydsm.main.service.post.PostService;
 import kr.hs.entrydsm.main.payload.response.PostDetailResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/main/post")
 @RequiredArgsConstructor
 public class MainPostController {
 
@@ -27,7 +27,7 @@ public class MainPostController {
         return postService.getListPost();
     }
 
-    @GetMapping("/post/{id}")
+    @GetMapping("/{id}")
     public PostDetailResponse detailPosts(@PathVariable Integer id) {
         return postDetailService.getDetailPost(id);
     }
@@ -42,8 +42,4 @@ public class MainPostController {
         return likeService.bestPostList(page);
     }
 
-    @GetMapping
-    public void search() {
-
-    }
 }

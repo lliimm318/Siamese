@@ -6,6 +6,7 @@ spring:
     password: ${DATABASE_PASSWORD:default}
   redis:
     host: ${REDIS_HOST:localhost}
+    password: ${REDIS_PASSWORD:default}
   jpa:
     hibernate:
       ddl-auto: none
@@ -14,6 +15,9 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 11MB
+  main:
+    allow-bean-definition-overriding: true
+
 aws:
   s3:
     bucket: ${AWS_S3_BUCKET:default}

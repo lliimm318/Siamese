@@ -1,4 +1,4 @@
-FROM openjdk:12-alpine
-COPY ./build/libs/*.jar siamese.jar
-
-ENTRYPOINT ["java", "-Xmx500m", "-jar", "-Duser.timezone=Asia/Seoul", "/siamese.jar"]
+FROM java:8
+COPY ./build/libs/*.jar app.jar
+ENTRYPOINT ["java","-jar", "-Xmx300M","/app.jar"]
+EXPOSE 8080

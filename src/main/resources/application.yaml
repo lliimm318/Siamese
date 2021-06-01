@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATABASE_HOST:jdbc:mysql://localhost:3306/init?serverTimezone=Asia/Seoul}
+    username: ${DATABASE_USERNAME:root}
+    password: ${DATABASE_PASSWORD:default}
+  redis:
+    host: ${REDIS_HOST:localhost}
+    password: ${REDIS_PASSWORD:default}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+  main:
+    allow-bean-definition-overriding: true
+
+aws:
+  s3:
+    bucket: ${AWS_S3_BUCKET:default}
+    region: ${AWS_S3_REGION:ap-northeast-2}
+    access_key: ${AWS_S3_ACCESS_KEY:access_key}
+    secret_key: ${AWS_S3_SECRET_KEY:secret_key}
+
+auth:
+  jwt:
+    secret_key: ${SECRET_KEY:asdfjkl}

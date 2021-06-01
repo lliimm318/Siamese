@@ -1,16 +1,21 @@
 package kr.hs.entrydsm.admin.entity;
 
-import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.TimeToLive;
 
-import java.time.LocalDateTime;
+import javax.persistence.GeneratedValue;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-// redis connection
+@Builder
+@RedisHash("banner")
 public class Banner {
+    @GeneratedValue
+    @Id
     private long imageId;
 
-    private LocalDateTime expiredAt;
+    @TimeToLive
+    private long ttl;
 }

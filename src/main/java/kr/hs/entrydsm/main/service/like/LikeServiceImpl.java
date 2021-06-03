@@ -8,11 +8,11 @@ import kr.hs.entrydsm.main.payload.response.PageResponse;
 import kr.hs.entrydsm.main.payload.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class LikeServiceImpl implements LikeService {
 
     @Override
     public PageResponse bestPostList(Pageable page) {
-        Page<Post> likes = postRepository.findByOrderByLikesDesc();
+        Page<Post> likes = postRepository.findByOrderByLikesDesc(page);
 
         Integer totalPages = likes.getTotalPages();
         Integer totalPost = likes.getNumberOfElements();

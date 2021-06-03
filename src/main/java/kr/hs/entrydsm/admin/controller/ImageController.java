@@ -15,7 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @JWTRequired
 @RestController
-@RequestMapping("/image")
+@RequestMapping("/admin/image")
 public class ImageController {
     private final AdminImageService imageService;
 

@@ -14,7 +14,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @JWTRequired
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/admin/post")
 public class PostController {
     private final ClubPostService clubPostService;
 

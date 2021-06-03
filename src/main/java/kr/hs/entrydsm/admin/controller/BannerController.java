@@ -12,7 +12,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @JWTRequired
 @RestController
-@RequestMapping("/banner")
+@RequestMapping("/admin/banner")
 public class BannerController {
     private final BannerService bannerService;
 

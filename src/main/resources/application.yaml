@@ -28,3 +28,7 @@ aws:
 auth:
   jwt:
     secret_key: ${SECRET_KEY:asdfjkl}
+
+server:
+  servlet:
+    context-path: /init

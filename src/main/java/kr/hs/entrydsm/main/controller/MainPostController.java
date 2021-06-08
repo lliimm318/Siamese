@@ -42,4 +42,9 @@ public class MainPostController {
         return likeService.bestPostList(page);
     }
 
+    @GetMapping("/test")
+    public String hello() {
+        return "HELL";
+    }
+    
 }

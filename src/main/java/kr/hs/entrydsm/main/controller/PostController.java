@@ -13,33 +13,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/main/post")
+@RequestMapping("/main")
 @RequiredArgsConstructor
-public class MainPostController {
+public class PostController {
 
     private final PostService postService;
+
     private final PostDetailService postDetailService;
+
     private final LikeService likeService;
 
 
-    @GetMapping
+    @GetMapping("/post")
     public List<PostResponse> getPosts() {
+
         return postService.getListPost();
+
     }
 
-    @GetMapping("/{id}")
-    public PostDetailResponse detailPosts(@PathVariable Integer id) {
-        return postDetailService.getDetailPost(id);
+    @GetMapping("/post/{postId}")
+    public PostDetailResponse detailPosts(@PathVariable long postId) {
+
+        return postDetailService.getDetailPost(postId);
+
     }
 
-    @PostMapping("/like/{postId}")
-    public void like(@PathVariable Integer postId) {
+    @PostMapping("/post/like/{postId}")
+    public void like(@PathVariable long postId) {
+
         likeService.createLike(postId);
+
     }
 
-    @GetMapping("/best")
+    @GetMapping("/post/best")
     public PageResponse bestPost(Pageable page) {
-        return likeService.bestPostList(page);
-    }
 
+        return likeService.bestPostList(page);
+
+    }
 }

@@ -1,5 +1,6 @@
 package kr.hs.entrydsm.main.service.like;
 
+import kr.hs.entrydsm.common.exception.PostNotFoundException;
 import kr.hs.entrydsm.main.enitity.Like;
 import kr.hs.entrydsm.main.enitity.Post;
 import kr.hs.entrydsm.main.enitity.repository.LikeRepository;
@@ -21,20 +22,24 @@ import java.util.List;
 public class LikeServiceImpl implements LikeService {
 
     private final LikeRepository likeRepository;
+
     private final PostRepository postRepository;
 
     @Override
-    public void createLike(Integer postId) {
+    public void createLike(long postId) {
         String ip = ((ServletRequestAttributes) RequestContextHolder
                 .currentRequestAttributes()).getRequest().getRemoteAddr();
 
         likeRepository.findByPostIdAndIp(postId, ip)
-                .ifPresent(like -> {throw new RuntimeException();});
+                .ifPresent(like -> {throw new PostNotFoundException();});
+
+        Post post = postRepository.findById(postId)
+                .orElseThrow(PostNotFoundException::new);
 
         likeRepository.save(
                 Like.builder()
                         .ip(ip)
-                        .postId(postId)
+                        .post(post)
                         .build()
         );
     }
@@ -53,9 +58,9 @@ public class LikeServiceImpl implements LikeService {
                     PostResponse.builder()
                         .id(post.getId())
                         .title(post.getTitle())
-                        .description(post.getDescription())
-                        .image(post.getImage().getPath())
-                        .type(post.getPostType())
+                        .author(post.getAuthor())
+                        .image(post.getImage().getId())
+                        .type(post.getType())
                         .build()
             );
         }

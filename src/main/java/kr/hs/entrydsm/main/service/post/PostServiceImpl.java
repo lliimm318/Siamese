@@ -20,9 +20,9 @@ public class PostServiceImpl implements PostService {
                     .map(post -> PostResponse.builder()
                             .id(post.getId())
                             .title(post.getTitle())
-                            .description(post.getDescription())
-                            .image(post.getImage().getPath())
-                            .type(post.getPostType())
+                            .author(post.getAuthor())
+                            .image(post.getImage().getId())
+                            .type(post.getType())
                             .build())
                     .collect(Collectors.toList());
     }

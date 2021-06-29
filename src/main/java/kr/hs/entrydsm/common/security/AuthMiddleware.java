@@ -1,10 +1,10 @@
 package kr.hs.entrydsm.common.security;
 
 import io.jsonwebtoken.Claims;
-import kr.hs.entrydsm.admin.entity.Club;
-import kr.hs.entrydsm.admin.entity.ClubRepository;
 import kr.hs.entrydsm.common.exception.TokenInvalidException;
 import kr.hs.entrydsm.common.security.authentication.ClubAuthentication;
+import kr.hs.entrydsm.main.enitity.Club;
+import kr.hs.entrydsm.main.enitity.repository.ClubRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

@@ -9,9 +9,15 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostResponse {
-    private Integer id;
+
+    private long id;
+
     private String title;
-    private String description;
-    private String image;
+
+    private String author;
+
+    private long image;
+
     private PostType type;
+
 }

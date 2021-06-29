@@ -10,11 +10,19 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostDetailResponse {
-    private Integer id;
+
+    private long id;
+
     private String title;
+
     private String author;
+
     private String description;
+
     private String content;
-    private String image;
+
+    private long image;
+
     private LocalDateTime date;
+
 }

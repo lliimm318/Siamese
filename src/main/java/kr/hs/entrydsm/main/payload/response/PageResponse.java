@@ -10,8 +10,11 @@ import java.util.List;
 @Setter
 @Builder
 public class PageResponse {
+
     private Integer totalPosts;
+
     private Integer totalPage;
+
     private List<PostResponse> bestListResponse;
 
 }

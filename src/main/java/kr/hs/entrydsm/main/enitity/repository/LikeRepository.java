@@ -8,5 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface LikeRepository extends CrudRepository<Like, Integer> {
-    Optional<Like> findByPostIdAndIp(Integer postId, String ip);
+
+    Optional<Like> findByPostIdAndIp(Long postId, String ip);
+
 }

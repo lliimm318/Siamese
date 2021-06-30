@@ -1,6 +1,6 @@
-package kr.hs.entrydsm.common.config;
+package kr.hs.entrydsm.config;
 
-import kr.hs.entrydsm.common.security.AuthMiddleware;
+import kr.hs.entrydsm.security.AuthMiddleware;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,8 +1,8 @@
-package kr.hs.entrydsm.admin.controller;
+package kr.hs.entrydsm.controller;
 
-import kr.hs.entrydsm.admin.service.AdminImageService;
-import kr.hs.entrydsm.admin.service.dto.ImageResponse;
-import kr.hs.entrydsm.common.security.JWTRequired;
+import kr.hs.entrydsm.service.Image.AdminImageService;
+import kr.hs.entrydsm.payload.response.ImageResponse;
+import kr.hs.entrydsm.security.JWTRequired;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;

@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.common.security;
+package kr.hs.entrydsm.security;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

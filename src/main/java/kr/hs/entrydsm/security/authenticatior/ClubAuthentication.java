@@ -1,6 +1,6 @@
-package kr.hs.entrydsm.common.security.authentication;
+package kr.hs.entrydsm.security.authenticatior;
 
-import kr.hs.entrydsm.admin.entity.Club;
+import kr.hs.entrydsm.enitity.Club;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.common.exception;
+package kr.hs.entrydsm.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

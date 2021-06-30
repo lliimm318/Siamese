@@ -1,14 +1,14 @@
-package kr.hs.entrydsm.main.service.post;
+package kr.hs.entrydsm.service.post;
 
-import kr.hs.entrydsm.main.enitity.repository.PostRepository;
-import kr.hs.entrydsm.main.payload.response.PostResponse;
+import kr.hs.entrydsm.enitity.repository.PostRepository;
+import kr.hs.entrydsm.payload.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service("mainPostService")
+@Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
 
@@ -20,9 +20,9 @@ public class PostServiceImpl implements PostService {
                     .map(post -> PostResponse.builder()
                             .id(post.getId())
                             .title(post.getTitle())
-                            .description(post.getDescription())
-                            .image(post.getImage().getPath())
-                            .type(post.getPostType())
+                            .author(post.getAuthor())
+                            .image(post.getImageId())
+                            .type(post.getType().toString())
                             .build())
                     .collect(Collectors.toList());
     }

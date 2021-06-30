@@ -1,7 +1,5 @@
-package kr.hs.entrydsm.main.enitity;
+package kr.hs.entrydsm.enitity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,10 +16,10 @@ public class Like {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
     private String ip;
 
-    private Integer postId;
+    private long postId;
 
 }

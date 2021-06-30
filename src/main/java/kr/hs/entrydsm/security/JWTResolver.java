@@ -1,8 +1,8 @@
-package kr.hs.entrydsm.common.security;
+package kr.hs.entrydsm.security;
 
 import io.jsonwebtoken.*;
-import kr.hs.entrydsm.common.exception.TokenInvalidException;
-import kr.hs.entrydsm.common.exception.TokenTypeInvalidException;
+import kr.hs.entrydsm.exception.TokenInvalidException;
+import kr.hs.entrydsm.exception.TokenTypeInvalidException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -25,11 +25,11 @@ public class JWTResolver {
 
     private String JWTBuild(JWTType type, String clubId) {
         return Jwts.builder().setIssuedAt(new Date())
-                             .setExpiration(new Date(System.currentTimeMillis() + type.getExpiration()))
-                             .setSubject(clubId)
-                             .claim("type", type)
-                             .signWith(SignatureAlgorithm.HS256, secretKey)
-                             .compact();
+                .setExpiration(new Date(System.currentTimeMillis() + type.getExpiration()))
+                .setSubject(clubId)
+                .claim("type", type)
+                .signWith(SignatureAlgorithm.HS256, secretKey)
+                .compact();
     }
 
     public Claims parseAccessToken(String token) {

@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.admin.entity;
+package kr.hs.entrydsm.enitity;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,8 +12,9 @@ import javax.persistence.Id;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name = "tbl_club")
 public class Club {
-    @GeneratedValue
+
     @Id
+    @GeneratedValue
     private String id;
 
     private String password;

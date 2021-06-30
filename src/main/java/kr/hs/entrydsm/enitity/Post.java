@@ -1,29 +1,28 @@
-package kr.hs.entrydsm.admin.entity;
+package kr.hs.entrydsm.enitity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity(name = "tbl_post")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Post {
-    @GeneratedValue
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private long imageId;
 
-    @ManyToOne
-    @JoinColumn(name = "club_id")
-    private Club club;
+    private String author;
 
     private String title;
-
-    private String author;
 
     private String description;
 
@@ -32,6 +31,14 @@ public class Post {
     private PostType type;
 
     private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "postId")
+    @JsonBackReference
+    private List<Like> likes;
+
+    @ManyToOne
+    @JoinColumn(name = "club_id")
+    private Club club;
 
     public Post update(Post post) {
         this.title = post.title;
@@ -42,4 +49,5 @@ public class Post {
 
         return this;
     }
+
 }

@@ -1,6 +1,9 @@
-package kr.hs.entrydsm.admin.entity;
+package kr.hs.entrydsm.enitity;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,8 +13,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity(name = "tbl_image")
 public class Image {
-    @GeneratedValue
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne

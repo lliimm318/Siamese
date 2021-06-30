@@ -1,11 +1,12 @@
-package kr.hs.entrydsm.main.service.like;
+package kr.hs.entrydsm.service.like;
 
-import kr.hs.entrydsm.main.enitity.Like;
-import kr.hs.entrydsm.main.enitity.Post;
-import kr.hs.entrydsm.main.enitity.repository.LikeRepository;
-import kr.hs.entrydsm.main.enitity.repository.PostRepository;
-import kr.hs.entrydsm.main.payload.response.PageResponse;
-import kr.hs.entrydsm.main.payload.response.PostResponse;
+import kr.hs.entrydsm.enitity.Like;
+import kr.hs.entrydsm.enitity.Post;
+import kr.hs.entrydsm.enitity.repository.LikeRepository;
+import kr.hs.entrydsm.enitity.repository.PostRepository;
+import kr.hs.entrydsm.payload.response.PageResponse;
+import kr.hs.entrydsm.payload.response.PostResponse;
+import kr.hs.entrydsm.service.exception.PostNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,15 +22,19 @@ import java.util.List;
 public class LikeServiceImpl implements LikeService {
 
     private final LikeRepository likeRepository;
+
     private final PostRepository postRepository;
 
     @Override
-    public void createLike(Integer postId) {
+    public void createLike(long postId) {
         String ip = ((ServletRequestAttributes) RequestContextHolder
                 .currentRequestAttributes()).getRequest().getRemoteAddr();
 
         likeRepository.findByPostIdAndIp(postId, ip)
-                .ifPresent(like -> {throw new RuntimeException();});
+                .ifPresent(like -> {throw new PostNotFoundException();});
+
+        Post post = postRepository.findById(postId)
+                .orElseThrow(PostNotFoundException::new);
 
         likeRepository.save(
                 Like.builder()
@@ -51,19 +56,20 @@ public class LikeServiceImpl implements LikeService {
         for(Post post : likes) {
             pageResponses.add(
                     PostResponse.builder()
-                        .id(post.getId())
-                        .title(post.getTitle())
-                        .description(post.getDescription())
-                        .image(post.getImage().getPath())
-                        .type(post.getPostType())
-                        .build()
+                            .id(post.getId())
+                            .title(post.getTitle())
+                            .author(post.getAuthor())
+                            .image(post.getImageId())
+                            .type(post.getType().toString())
+                            .build()
             );
         }
         return PageResponse.builder()
-                    .totalPage(totalPages)
-                    .totalPosts(totalPost)
-                    .bestListResponse(pageResponses)
-                    .build();
+                .totalPage(totalPages)
+                .totalPosts(totalPost)
+                .bestListResponse(pageResponses)
+                .build();
 
     }
 }
+

@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.common.config;
+package kr.hs.entrydsm.config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;

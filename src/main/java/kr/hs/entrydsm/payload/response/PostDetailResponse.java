@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.main.payload.response;
+package kr.hs.entrydsm.payload.response;
 
 import lombok.*;
 
@@ -10,11 +10,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostDetailResponse {
-    private Integer id;
+
+    private long id;
+
+    private long image;
+
     private String title;
+
     private String author;
-    private String description;
+
     private String content;
-    private String image;
+
     private LocalDateTime date;
+
 }
+

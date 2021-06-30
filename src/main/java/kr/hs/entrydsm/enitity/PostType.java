@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.admin.entity;
+package kr.hs.entrydsm.enitity;
 
 public enum PostType {
     LIGHTNING_TALK,

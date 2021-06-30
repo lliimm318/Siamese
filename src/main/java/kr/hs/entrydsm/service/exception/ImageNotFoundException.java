@@ -1,6 +1,6 @@
-package kr.hs.entrydsm.admin.service.exception;
+package kr.hs.entrydsm.service.exception;
 
-import kr.hs.entrydsm.common.exception.ServiceException;
+import kr.hs.entrydsm.exception.ServiceException;
 import org.springframework.http.HttpStatus;
 
 public class ImageNotFoundException extends ServiceException {

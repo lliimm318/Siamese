@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.common.config;
+package kr.hs.entrydsm.config;
 
 import kr.hs.entrydsm.SiameseApplication;
 import org.springframework.beans.factory.annotation.Value;

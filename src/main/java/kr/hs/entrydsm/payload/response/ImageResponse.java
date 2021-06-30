@@ -1,10 +1,7 @@
-package kr.hs.entrydsm.admin.service.dto;
+package kr.hs.entrydsm.payload.response;
 
 import lombok.Builder;
 import lombok.Getter;
-
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 @Getter
 @Builder

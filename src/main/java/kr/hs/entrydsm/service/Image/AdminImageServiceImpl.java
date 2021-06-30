@@ -1,14 +1,15 @@
-package kr.hs.entrydsm.admin.service;
+package kr.hs.entrydsm.service.Image;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import kr.hs.entrydsm.admin.entity.Image;
-import kr.hs.entrydsm.admin.entity.AdminImageRepository;
-import kr.hs.entrydsm.admin.service.dto.ImageResponse;
-import kr.hs.entrydsm.admin.service.exception.InvalidFileExtensionException;
-import kr.hs.entrydsm.common.exception.BadRequestException;
-import kr.hs.entrydsm.common.security.AuthMiddleware;
+import kr.hs.entrydsm.payload.response.ImageResponse;
+import kr.hs.entrydsm.service.Image.AdminImageService;
+import kr.hs.entrydsm.service.exception.InvalidFileExtensionException;
+import kr.hs.entrydsm.exception.BadRequestException;
+import kr.hs.entrydsm.security.AuthMiddleware;
+import kr.hs.entrydsm.enitity.Image;
+import kr.hs.entrydsm.enitity.repository.AdminImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

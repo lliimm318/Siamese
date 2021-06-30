@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.main.payload.response;
+package kr.hs.entrydsm.payload.response;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -10,8 +10,11 @@ import java.util.List;
 @Setter
 @Builder
 public class PageResponse {
+
     private Integer totalPosts;
+
     private Integer totalPage;
+
     private List<PostResponse> bestListResponse;
 
 }

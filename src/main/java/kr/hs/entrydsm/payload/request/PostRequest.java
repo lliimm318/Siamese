@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.admin.service.dto;
+package kr.hs.entrydsm.payload.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

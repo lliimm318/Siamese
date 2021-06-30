@@ -1,6 +1,6 @@
-package kr.hs.entrydsm.main.enitity.repository;
+package kr.hs.entrydsm.enitity.repository;
 
-import kr.hs.entrydsm.main.enitity.Like;
+import kr.hs.entrydsm.enitity.Like;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface LikeRepository extends CrudRepository<Like, Integer> {
-    Optional<Like> findByPostIdAndIp(Integer postId, String ip);
+
+    Optional<Like> findByPostIdAndIp(Long postId, String ip);
+
 }

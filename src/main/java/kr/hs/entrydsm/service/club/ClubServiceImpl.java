@@ -1,14 +1,15 @@
-package kr.hs.entrydsm.admin.service;
+package kr.hs.entrydsm.service.club;
 
-import kr.hs.entrydsm.admin.entity.Club;
-import kr.hs.entrydsm.admin.entity.ClubRepository;
-import kr.hs.entrydsm.admin.service.dto.ClubResponse;
-import kr.hs.entrydsm.admin.service.dto.LoginRequest;
-import kr.hs.entrydsm.admin.service.dto.LoginResponse;
-import kr.hs.entrydsm.admin.service.dto.RefreshResponse;
-import kr.hs.entrydsm.common.exception.CredentialInvalidException;
-import kr.hs.entrydsm.common.security.AuthMiddleware;
-import kr.hs.entrydsm.common.security.JWTResolver;
+import kr.hs.entrydsm.payload.response.ClubResponse;
+import kr.hs.entrydsm.payload.request.LoginRequest;
+import kr.hs.entrydsm.payload.response.LoginResponse;
+import kr.hs.entrydsm.payload.response.RefreshResponse;
+import kr.hs.entrydsm.exception.CredentialInvalidException;
+import kr.hs.entrydsm.security.AuthMiddleware;
+import kr.hs.entrydsm.security.JWTResolver;
+import kr.hs.entrydsm.enitity.Club;
+import kr.hs.entrydsm.enitity.repository.ClubRepository;
+import kr.hs.entrydsm.service.club.ClubService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

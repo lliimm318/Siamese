@@ -1,4 +1,4 @@
-package kr.hs.entrydsm.admin.entity;
+package kr.hs.entrydsm.enitity;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -12,8 +12,10 @@ import javax.persistence.GeneratedValue;
 @Builder
 @RedisHash("banner")
 public class Banner {
-    @GeneratedValue
+
+
     @Id
+    @GeneratedValue
     private long imageId;
 
     @TimeToLive

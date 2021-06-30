@@ -1,10 +1,10 @@
-package kr.hs.entrydsm.common.security;
+package kr.hs.entrydsm.security;
 
 import io.jsonwebtoken.Claims;
-import kr.hs.entrydsm.admin.entity.Club;
-import kr.hs.entrydsm.admin.entity.ClubRepository;
-import kr.hs.entrydsm.common.exception.TokenInvalidException;
-import kr.hs.entrydsm.common.security.authentication.ClubAuthentication;
+import kr.hs.entrydsm.exception.TokenInvalidException;
+import kr.hs.entrydsm.security.authenticatior.ClubAuthentication;
+import kr.hs.entrydsm.enitity.Club;
+import kr.hs.entrydsm.enitity.repository.ClubRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -64,3 +64,4 @@ public class AuthMiddleware implements HandlerInterceptor {
         SecurityContextHolder.getContext().setAuthentication(new ClubAuthentication(club));
     }
 }
+

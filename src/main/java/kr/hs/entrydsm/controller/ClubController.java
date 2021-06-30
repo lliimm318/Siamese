@@ -22,7 +22,6 @@ public class ClubController {
 
     @PostMapping("/login")
     public LoginResponse login(@Valid @RequestBody LoginRequest loginRequest) {
-        System.out.println(passwordEncoder.encode("qwe123"));
         return clubService.login(loginRequest);
     }
 

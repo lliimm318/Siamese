@@ -14,10 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @JWTRequired
 @RestController
-<<<<<<< HEAD:src/main/java/kr/hs/entrydsm/controller/BannerController.java
-=======
-@RequestMapping("/admin/banner")
->>>>>>> main:src/main/java/kr/hs/entrydsm/admin/controller/BannerController.java
 public class BannerController {
 
     private final BannerService bannerService;

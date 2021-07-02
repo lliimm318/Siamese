@@ -12,18 +12,19 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
-@JWTRequired
 @RestController
 public class BannerController {
 
     private final BannerService bannerService;
 
+    @JWTRequired
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/banner")
     public void createBanner(@Valid @RequestBody BannerRequest bannerRequest) {
         bannerService.createBanner(bannerRequest);
     }
 
+    @JWTRequired
     @DeleteMapping("/banner/{imageId}")
     public void deleteBanner(@PathVariable int imageId) {
         bannerService.deleteBanner(imageId);

@@ -19,7 +19,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
-@JWTRequired
 @RestController
 public class PostController {
 
@@ -28,27 +27,32 @@ public class PostController {
     private final PostDetailService postDetailService;
     private final LikeService likeService;
 
+    @JWTRequired
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
+    @PostMapping("/post")
     public void createPost(@Valid @RequestBody PostRequest postRequest) {
         clubPostService.createPost(postRequest);
     }
 
+    @JWTRequired
     @DeleteMapping("/post/{postId}")
     public void deletePost(@PathVariable long postId) {
         clubPostService.deletePost(postId);
     }
 
+    @JWTRequired
     @PutMapping("/post/{postId}")
     public void updatePost(@PathVariable long postId, @Valid @RequestBody PostRequest postRequest) {
         clubPostService.updatePost(postId, postRequest);
     }
 
+    @JWTRequired
     @GetMapping("/post")
     public PostsResponse getPosts() {
         return clubPostService.getPosts();
     }
 
+    @JWTRequired
     @GetMapping("/post/{postId}")
     public PostResponse getPost(@PathVariable long postId) {
         return clubPostService.getPost(postId);

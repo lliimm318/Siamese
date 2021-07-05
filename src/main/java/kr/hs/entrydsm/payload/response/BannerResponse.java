@@ -14,6 +14,6 @@ public class BannerResponse {
     private String id;
 
     @PositiveOrZero
-    private long imageId;
+    private long postId;
 
 }

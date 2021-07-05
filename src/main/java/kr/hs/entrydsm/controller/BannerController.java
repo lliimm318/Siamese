@@ -26,8 +26,8 @@ public class BannerController {
 
     @JWTRequired
     @DeleteMapping("/banner/{imageId}")
-    public void deleteBanner(@PathVariable int imageId) {
-        bannerService.deleteBanner(imageId);
+    public void deleteBanner(@PathVariable int postId) {
+        bannerService.deleteBanner(postId);
     }
 
     @GetMapping("/main/banner")

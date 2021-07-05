@@ -13,10 +13,9 @@ import javax.persistence.GeneratedValue;
 @RedisHash("banner")
 public class Banner {
 
-
     @Id
     @GeneratedValue
-    private long imageId;
+    private long postId;
 
     @TimeToLive
     private long ttl;

@@ -1,5 +1,7 @@
 package kr.hs.entrydsm.service.banner;
 
+import kr.hs.entrydsm.enitity.Post;
+import kr.hs.entrydsm.enitity.repository.PostRepository;
 import kr.hs.entrydsm.payload.request.BannerRequest;
 import kr.hs.entrydsm.payload.response.BannerResponse;
 import kr.hs.entrydsm.service.banner.BannerService;
@@ -22,28 +24,27 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class BannerServiceImpl implements BannerService {
-
-    private final AdminImageRepository adminImageRepository;
+    private final PostRepository postRepository;
     private final BannerRepository bannerRepository;
 
     @Override
     public void createBanner(BannerRequest bannerRequest) {
-        Image image = adminImageRepository.findById(bannerRequest.getImageId()).orElseThrow(ImageNotFoundException::new);
-        if (bannerRepository.findById(image.getId()).isPresent()) { throw new BannerExistException(); }
+        Post post = postRepository.findById(bannerRequest.getPostId()).orElseThrow(ImageNotFoundException::new);
+        if (bannerRepository.findById(post.getId()).isPresent()) { throw new BannerExistException(); }
         Club currentClub = AuthMiddleware.currentClub();
-        if (!currentClub.getId().equals(image.getClub().getId())) { throw new ForbiddenException(); }
+        if (!currentClub.getId().equals(post.getClub().getId())) { throw new ForbiddenException(); }
         bannerRepository.save(Banner.builder()
-                .imageId(image.getId())
+                .postId(post.getId())
                 .ttl(bannerRequest.getTtl())
                 .build());
     }
 
     @Override
-    public void deleteBanner(long imageId) {
-        Banner banner = bannerRepository.findById(imageId).orElseThrow(BannerNotFoundException::new);
-        Image image = adminImageRepository.findById(imageId).orElseThrow(ImageNotFoundException::new);
+    public void deleteBanner(long postId) {
+        Banner banner = bannerRepository.findById(postId).orElseThrow(BannerNotFoundException::new);
+        Post post = postRepository.findById(postId).orElseThrow(ImageNotFoundException::new);
         Club currentClub = AuthMiddleware.currentClub();
-        if (!image.getClub().getId().equals(currentClub.getId())) { throw new ForbiddenException(); }
+        if (!post.getClub().getId().equals(currentClub.getId())) { throw new ForbiddenException(); }
         bannerRepository.delete(banner);
     }
 
@@ -51,7 +52,7 @@ public class BannerServiceImpl implements BannerService {
     public List<BannerResponse> getBannerList() {
         return bannerRepository.findAllBy().stream()
                 .map(bannerList -> BannerResponse.builder()
-                        .imageId(bannerList.getImageId())
+                        .postId(bannerList.getPostId())
                         .build())
                 .collect(Collectors.toList());
     }

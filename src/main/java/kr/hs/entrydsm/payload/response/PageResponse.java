@@ -15,6 +15,6 @@ public class PageResponse {
 
     private Integer totalPage;
 
-    private List<PostResponse> bestListResponse;
+    private List<RecommendPostResponse> bestListResponse;
 
 }

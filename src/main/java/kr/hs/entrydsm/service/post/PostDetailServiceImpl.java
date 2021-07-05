@@ -1,6 +1,8 @@
 package kr.hs.entrydsm.service.post;
 
+import kr.hs.entrydsm.enitity.Image;
 import kr.hs.entrydsm.enitity.Post;
+import kr.hs.entrydsm.enitity.repository.ImageRepository;
 import kr.hs.entrydsm.enitity.repository.PostRepository;
 import kr.hs.entrydsm.payload.response.PostDetailResponse;
 import kr.hs.entrydsm.service.exception.PostNotFoundException;
@@ -11,18 +13,20 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PostDetailServiceImpl implements PostDetailService {
     private final PostRepository postRepository;
+    private final ImageRepository imageRepository;
 
     @Override
     public PostDetailResponse getDetailPost(long id) {
         Post post = postRepository.findById(id)
                 .orElseThrow(PostNotFoundException::new);
+        Image image = imageRepository.findById((int) post.getImageId()).orElseThrow();
 
         return PostDetailResponse.builder()
                     .id(post.getId())
                     .title(post.getTitle())
                     .author(post.getAuthor())
                     .content(post.getContent())
-                    .imageId(post.getImageId())
+                    .thumbnailPath(image.getPath())
                     .date(post.getCreatedAt())
                     .build();
     }

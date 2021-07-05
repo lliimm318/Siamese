@@ -1,6 +1,6 @@
 package kr.hs.entrydsm.payload.response;
 
-import kr.hs.entrydsm.enitity.PostType;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -15,10 +15,6 @@ public class PostResponse {
     private String title;
 
     private String author;
-
-    private String description;
-
-    private String content;
 
     private String type;
 }

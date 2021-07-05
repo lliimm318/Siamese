@@ -1,8 +1,8 @@
 package kr.hs.entrydsm.payload.response;
 
-
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Builder
@@ -16,5 +16,10 @@ public class PostResponse {
 
     private String author;
 
+    private String description;
+
+    private String content;
+
     private String type;
+
 }

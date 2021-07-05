@@ -22,7 +22,7 @@ public class PostDetailServiceImpl implements PostDetailService {
                     .title(post.getTitle())
                     .author(post.getAuthor())
                     .content(post.getContent())
-                    .image(post.getImageId())
+                    .imageId(post.getImageId())
                     .date(post.getCreatedAt())
                     .build();
     }

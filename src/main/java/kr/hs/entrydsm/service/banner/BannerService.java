@@ -9,7 +9,7 @@ public interface BannerService {
 
     void createBanner(BannerRequest bannerRequest);
 
-    void deleteBanner(long imageId);
+    void deleteBanner(long postId);
 
     List<BannerResponse> getBannerList();
 

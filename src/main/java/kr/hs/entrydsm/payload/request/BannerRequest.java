@@ -10,7 +10,7 @@ import javax.validation.constraints.PositiveOrZero;
 @AllArgsConstructor
 public class BannerRequest {
     @PositiveOrZero
-    private long imageId;
+    private long postId;
 
     @Positive
     private long ttl;

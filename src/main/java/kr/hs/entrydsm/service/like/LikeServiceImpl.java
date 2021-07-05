@@ -6,6 +6,7 @@ import kr.hs.entrydsm.enitity.repository.LikeRepository;
 import kr.hs.entrydsm.enitity.repository.PostRepository;
 import kr.hs.entrydsm.payload.response.PageResponse;
 import kr.hs.entrydsm.payload.response.PostResponse;
+import kr.hs.entrydsm.payload.response.RecommendPostResponse;
 import kr.hs.entrydsm.service.exception.PostNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -51,16 +52,15 @@ public class LikeServiceImpl implements LikeService {
         Integer totalPages = likes.getTotalPages();
         Integer totalPost = likes.getNumberOfElements();
 
-        List<PostResponse> pageResponses = new ArrayList<>();
+        List<RecommendPostResponse> pageResponses = new ArrayList<>();
 
         for(Post post : likes) {
             pageResponses.add(
-                    PostResponse.builder()
+                    RecommendPostResponse.builder()
                             .id(post.getId())
                             .title(post.getTitle())
                             .author(post.getAuthor())
                             .image(post.getImageId())
-                            .type(post.getType().toString())
                             .build()
             );
         }

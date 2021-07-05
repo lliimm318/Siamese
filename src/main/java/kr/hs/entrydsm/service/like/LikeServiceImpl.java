@@ -5,7 +5,6 @@ import kr.hs.entrydsm.enitity.Post;
 import kr.hs.entrydsm.enitity.repository.LikeRepository;
 import kr.hs.entrydsm.enitity.repository.PostRepository;
 import kr.hs.entrydsm.payload.response.PageResponse;
-import kr.hs.entrydsm.payload.response.PostResponse;
 import kr.hs.entrydsm.payload.response.RecommendPostResponse;
 import kr.hs.entrydsm.service.exception.PostNotFoundException;
 import lombok.RequiredArgsConstructor;

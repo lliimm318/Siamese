@@ -28,6 +28,7 @@ public class Post {
 
     private String content;
 
+    @Enumerated(EnumType.STRING)
     private PostType type;
 
     private LocalDateTime createdAt;

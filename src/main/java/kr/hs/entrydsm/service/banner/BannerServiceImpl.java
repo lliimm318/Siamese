@@ -48,12 +48,4 @@ public class BannerServiceImpl implements BannerService {
         bannerRepository.delete(banner);
     }
 
-    @Override
-    public List<BannerResponse> getBannerList() {
-        return bannerRepository.findAllBy().stream()
-                .map(bannerList -> BannerResponse.builder()
-                        .postId(bannerList.getPostId())
-                        .build())
-                .collect(Collectors.toList());
-    }
 }

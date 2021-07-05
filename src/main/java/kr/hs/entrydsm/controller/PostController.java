@@ -1,11 +1,8 @@
 package kr.hs.entrydsm.controller;
 
+import kr.hs.entrydsm.payload.response.*;
 import kr.hs.entrydsm.service.club.ClubPostService;
 import kr.hs.entrydsm.payload.request.PostRequest;
-import kr.hs.entrydsm.payload.response.PostResponse;
-import kr.hs.entrydsm.payload.response.PostsResponse;
-import kr.hs.entrydsm.payload.response.PageResponse;
-import kr.hs.entrydsm.payload.response.PostDetailResponse;
 import kr.hs.entrydsm.service.like.LikeService;
 import kr.hs.entrydsm.service.post.PostDetailService;
 import kr.hs.entrydsm.service.post.PostService;
@@ -59,7 +56,7 @@ public class PostController {
     }
 
     @GetMapping("/main/post")
-    public List<PostResponse> getPostList() {
+    public List<MainPostResponse> getPostList() {
 
         return postService.getListPost();
 

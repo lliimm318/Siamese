@@ -13,7 +13,7 @@ public class PostDetailResponse {
 
     private long id;
 
-    private long imageId;
+    private String thumbnailPath;
 
     private String title;
 

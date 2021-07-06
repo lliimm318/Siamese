@@ -18,8 +18,6 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private long imageId;
-
     private String author;
 
     private String title;
@@ -32,6 +30,10 @@ public class Post {
     private PostType type;
 
     private LocalDateTime createdAt;
+
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
 
     @OneToMany(mappedBy = "postId")
     @JsonBackReference

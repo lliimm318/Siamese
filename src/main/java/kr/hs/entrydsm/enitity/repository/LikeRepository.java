@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface LikeRepository extends CrudRepository<Like, Integer> {
+public interface LikeRepository extends CrudRepository<Like, Long> {
 
     Optional<Like> findByPostIdAndIp(Long postId, String ip);
 

@@ -83,7 +83,7 @@ public class ClubPostServiceImpl implements ClubPostService {
         try {
             return Post.builder()
                     .club(AuthMiddleware.currentClub())
-                    .image(imageRepository.findById((int) postRequest.getImageId()).orElseThrow(ImageNotFoundException::new))
+                    .image(imageRepository.findById( postRequest.getImageId()).orElseThrow(ImageNotFoundException::new))
                     .title(postRequest.getTitle())
                     .author(postRequest.getAuthor())
                     .description(postRequest.getDescription())

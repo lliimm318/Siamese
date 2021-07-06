@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface BannerRepository extends CrudRepository<Banner, Long> {
 
+    List<BannerResponse> findAllBy();
+
 }

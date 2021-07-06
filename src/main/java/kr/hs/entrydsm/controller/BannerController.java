@@ -30,4 +30,10 @@ public class BannerController {
         bannerService.deleteBanner(postId);
     }
 
+    @GetMapping("/main/banner")
+    public List<BannerResponse> getBanners() {
+
+        return bannerService.getBannerList();
+
+    }
 }

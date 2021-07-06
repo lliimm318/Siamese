@@ -20,7 +20,7 @@ public class PostDetailServiceImpl implements PostDetailService {
     public PostDetailResponse getDetailPost(long id) {
         Post post = postRepository.findById(id)
                 .orElseThrow(PostNotFoundException::new);
-        Image image = imageRepository.findById((int) post.getImage().getId())
+        Image image = imageRepository.findById(post.getImage().getId())
                 .orElseThrow(ImageNotFoundException::new);
 
         return PostDetailResponse.builder()

@@ -1,10 +1,14 @@
 package kr.hs.entrydsm.service.club;
 
+import kr.hs.entrydsm.enitity.Image;
+import kr.hs.entrydsm.enitity.repository.ImageRepository;
+import kr.hs.entrydsm.enitity.repository.PostRepository;
 import kr.hs.entrydsm.payload.response.PostPreviewResponse;
 import kr.hs.entrydsm.payload.request.PostRequest;
 import kr.hs.entrydsm.payload.response.PostResponse;
 import kr.hs.entrydsm.payload.response.PostsResponse;
 import kr.hs.entrydsm.service.exception.ForbiddenException;
+import kr.hs.entrydsm.service.exception.ImageNotFoundException;
 import kr.hs.entrydsm.service.exception.InvalidPostTypeException;
 import kr.hs.entrydsm.service.exception.PostNotFoundException;
 import kr.hs.entrydsm.security.AuthMiddleware;
@@ -23,6 +27,7 @@ import java.util.stream.Collectors;
 @Service
 public class ClubPostServiceImpl implements ClubPostService {
     private final ClubPostRepository clubPostRepository;
+    private final ImageRepository imageRepository;
 
     @Override
     public void createPost(PostRequest postRequest) {
@@ -78,7 +83,7 @@ public class ClubPostServiceImpl implements ClubPostService {
         try {
             return Post.builder()
                     .club(AuthMiddleware.currentClub())
-                    .imageId(postRequest.getImageId())
+                    .image(imageRepository.findById((int) postRequest.getImageId()).orElseThrow(ImageNotFoundException::new))
                     .title(postRequest.getTitle())
                     .author(postRequest.getAuthor())
                     .description(postRequest.getDescription())

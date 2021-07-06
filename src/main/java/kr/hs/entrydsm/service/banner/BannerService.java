@@ -11,4 +11,6 @@ public interface BannerService {
 
     void deleteBanner(long postId);
 
+    List<BannerResponse> getBannerList();
+
 }

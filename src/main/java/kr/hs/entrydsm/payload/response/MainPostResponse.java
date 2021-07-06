@@ -10,7 +10,9 @@ public class MainPostResponse {
 
     private long id;
 
-    private long image;
+    private String imagePath;
+
+    private String description;
 
     private String title;
 

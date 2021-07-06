@@ -1,5 +1,6 @@
 package kr.hs.entrydsm.service.post;
 
+import kr.hs.entrydsm.enitity.repository.ImageRepository;
 import kr.hs.entrydsm.enitity.repository.PostRepository;
 import kr.hs.entrydsm.payload.response.MainPostResponse;
 import lombok.RequiredArgsConstructor;
@@ -13,17 +14,20 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
+    private final ImageRepository imageRepository;
 
     @Override
     public List<MainPostResponse> getListPost() {
+
         return postRepository.findAllBy().stream()
                     .map(post -> MainPostResponse.builder()
                             .id(post.getId())
                             .title(post.getTitle())
+                            .description(post.getDescription())
                             .author(post.getAuthor())
-                            .image(post.getImageId())
+                            .imagePath(post.getImage().getPath())
                             .build())
                     .collect(Collectors.toList());
     }
-}
 
+}

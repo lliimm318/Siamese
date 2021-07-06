@@ -77,7 +77,7 @@ public class PostController {
     }
 
     @GetMapping("/main/post/best")
-    public PageResponse bestPost(Pageable page) {
+    public RecommendPageResponse bestPost(Pageable page) {
 
         return likeService.bestPostList(page);
 

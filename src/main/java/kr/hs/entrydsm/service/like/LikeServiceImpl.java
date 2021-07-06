@@ -4,7 +4,7 @@ import kr.hs.entrydsm.enitity.Like;
 import kr.hs.entrydsm.enitity.Post;
 import kr.hs.entrydsm.enitity.repository.LikeRepository;
 import kr.hs.entrydsm.enitity.repository.PostRepository;
-import kr.hs.entrydsm.payload.response.PageResponse;
+import kr.hs.entrydsm.payload.response.RecommendPageResponse;
 import kr.hs.entrydsm.payload.response.RecommendPostResponse;
 import kr.hs.entrydsm.service.exception.PostNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -45,7 +45,7 @@ public class LikeServiceImpl implements LikeService {
     }
 
     @Override
-    public PageResponse bestPostList(Pageable page) {
+    public RecommendPageResponse bestPostList(Pageable page) {
         Page<Post> likes = postRepository.findByOrderByLikesDesc(page);
 
         Integer totalPages = likes.getTotalPages();
@@ -59,11 +59,11 @@ public class LikeServiceImpl implements LikeService {
                             .id(post.getId())
                             .title(post.getTitle())
                             .author(post.getAuthor())
-                            .image(post.getImageId())
+                            .imagePath(post.getImage().getPath())
                             .build()
             );
         }
-        return PageResponse.builder()
+        return RecommendPageResponse.builder()
                 .totalPage(totalPages)
                 .totalPosts(totalPost)
                 .bestListResponse(pageResponses)

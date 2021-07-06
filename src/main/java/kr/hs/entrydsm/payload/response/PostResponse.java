@@ -2,7 +2,6 @@ package kr.hs.entrydsm.payload.response;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Builder
@@ -10,7 +9,7 @@ public class PostResponse {
 
     private long id;
 
-    private long image;
+    private String imagePath;
 
     private String title;
 

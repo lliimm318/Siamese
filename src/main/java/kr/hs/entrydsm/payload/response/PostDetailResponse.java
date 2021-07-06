@@ -13,7 +13,9 @@ public class PostDetailResponse {
 
     private long id;
 
-    private String thumbnailPath;
+    private String imagePath;
+
+    private String description;
 
     private String title;
 

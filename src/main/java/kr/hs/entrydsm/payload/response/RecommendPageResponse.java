@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class PageResponse {
+public class RecommendPageResponse {
 
     private Integer totalPosts;
 

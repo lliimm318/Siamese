@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -31,7 +30,7 @@ public class BannerController {
     }
 
     @GetMapping("/main/banner")
-    public List<BannerResponse> getBanners() {
+    public BannerResponse getBanners() {
 
         return bannerService.getBannerList();
 

@@ -26,6 +26,7 @@ public class PostServiceImpl implements PostService {
                             .description(post.getDescription())
                             .author(post.getAuthor())
                             .imagePath(post.getImage().getPath())
+                            .type(post.getType().toString())
                             .build())
                     .collect(Collectors.toList());
     }

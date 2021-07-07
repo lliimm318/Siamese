@@ -7,8 +7,8 @@ import kr.hs.entrydsm.service.like.LikeService;
 import kr.hs.entrydsm.service.post.PostDetailService;
 import kr.hs.entrydsm.service.post.PostService;
 import kr.hs.entrydsm.security.JWTRequired;
+import kr.hs.entrydsm.service.search.SearchService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +23,8 @@ public class PostController {
     private final PostService postService;
     private final PostDetailService postDetailService;
     private final LikeService likeService;
-
+    private final SearchService searchService;
+    
     @JWTRequired
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/post")
@@ -77,10 +78,18 @@ public class PostController {
     }
 
     @GetMapping("/main/post/best")
-    public RecommendPageResponse bestPost(Pageable page) {
+    public List<RecommendResponse> bestPost() {
 
-        return likeService.bestPostList(page);
+        return likeService.bestPostList();
 
+    } 
+    
+    @GetMapping("/main/search")
+
+    public List<SearchResponse> getSearchList(@RequestParam("search") String searchWord) {
+
+        return searchService.searchPostList(searchWord);
+        
     }
-
+    
 }

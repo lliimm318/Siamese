@@ -18,8 +18,10 @@ import kr.hs.entrydsm.enitity.repository.BannerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @RequiredArgsConstructor
 @Service
@@ -49,12 +51,11 @@ public class BannerServiceImpl implements BannerService {
     }
 
     @Override
-    public List<BannerResponse> getBannerList() {
-        return bannerRepository.findAllBy().stream()
-                .map(bannerList -> BannerResponse.builder()
-                        .postId(bannerList.getPostId())
-                        .build())
+    public BannerResponse getBannerList() {
+        List<Long> postIds = StreamSupport.stream(bannerRepository.findAll().spliterator(), false)
+                .map(Banner::getPostId)
                 .collect(Collectors.toList());
+        return BannerResponse.builder().postIds(postIds).build();
     }
 
 }

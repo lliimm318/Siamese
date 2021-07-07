@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class RecommendPostResponse {
+public class RecommendResponse {
 
     private long id;
 
@@ -16,5 +16,7 @@ public class RecommendPostResponse {
     private String title;
 
     private String author;
+
+    private String type;
 
 }

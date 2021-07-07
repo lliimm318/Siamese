@@ -2,18 +2,11 @@ package kr.hs.entrydsm.payload.response;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
-import javax.validation.constraints.PositiveOrZero;
+import java.util.List;
 
 @Getter
-@Setter
 @Builder
 public class BannerResponse {
-
-    private String id;
-
-    @PositiveOrZero
-    private long postId;
-
+    List<Long> postIds;
 }

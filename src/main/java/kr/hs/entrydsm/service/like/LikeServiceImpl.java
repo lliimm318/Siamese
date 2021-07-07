@@ -4,8 +4,7 @@ import kr.hs.entrydsm.enitity.Like;
 import kr.hs.entrydsm.enitity.Post;
 import kr.hs.entrydsm.enitity.repository.LikeRepository;
 import kr.hs.entrydsm.enitity.repository.PostRepository;
-import kr.hs.entrydsm.payload.response.RecommendPageResponse;
-import kr.hs.entrydsm.payload.response.RecommendPostResponse;
+import kr.hs.entrydsm.payload.response.RecommendResponse;
 import kr.hs.entrydsm.service.exception.PostNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -45,30 +44,27 @@ public class LikeServiceImpl implements LikeService {
     }
 
     @Override
-    public RecommendPageResponse bestPostList(Pageable page) {
-        Page<Post> likes = postRepository.findByOrderByLikesDesc(page);
+    public List<RecommendResponse> bestPostList() {
 
-        Integer totalPages = likes.getTotalPages();
-        Integer totalPost = likes.getNumberOfElements();
+        List<Post> likes = postRepository.findByOrderByLikesDesc();
 
-        List<RecommendPostResponse> pageResponses = new ArrayList<>();
+        List<RecommendResponse> recommendListResponses = new ArrayList<>();
 
         for(Post post : likes) {
-            pageResponses.add(
-                    RecommendPostResponse.builder()
+            recommendListResponses.add(
+                    RecommendResponse.builder()
                             .id(post.getId())
                             .title(post.getTitle())
+                            .description(post.getDescription())
                             .author(post.getAuthor())
                             .imagePath(post.getImage().getPath())
+                            .type(post.getType().toString())
                             .build()
             );
         }
-        return RecommendPageResponse.builder()
-                .totalPage(totalPages)
-                .totalPosts(totalPost)
-                .bestListResponse(pageResponses)
-                .build();
+        return recommendListResponses;
 
     }
+
 }
 

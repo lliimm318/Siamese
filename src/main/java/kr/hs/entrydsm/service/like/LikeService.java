@@ -1,12 +1,13 @@
 package kr.hs.entrydsm.service.like;
 
-import kr.hs.entrydsm.payload.response.RecommendPageResponse;
-import org.springframework.data.domain.Pageable;
+import kr.hs.entrydsm.payload.response.RecommendResponse;
+
+import java.util.List;
 
 public interface LikeService {
 
     void createLike(long postId);
 
-    RecommendPageResponse bestPostList(Pageable page);
+    List<RecommendResponse> bestPostList();
 
 }

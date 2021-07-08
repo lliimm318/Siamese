@@ -6,6 +6,8 @@ import kr.hs.entrydsm.payload.response.MainPostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,12 +16,11 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
-    private final ImageRepository imageRepository;
 
     @Override
     public List<MainPostResponse> getListPost() {
 
-        return postRepository.findAllBy().stream()
+        return postRepository.findAllByOrderByCreatedAtDesc().stream()
                     .map(post -> MainPostResponse.builder()
                             .id(post.getId())
                             .title(post.getTitle())
@@ -29,6 +30,6 @@ public class PostServiceImpl implements PostService {
                             .type(post.getType().toString())
                             .build())
                     .collect(Collectors.toList());
-    }
+   }
 
 }

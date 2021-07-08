@@ -9,7 +9,6 @@ import kr.hs.entrydsm.security.AuthMiddleware;
 import kr.hs.entrydsm.security.JWTResolver;
 import kr.hs.entrydsm.enitity.Club;
 import kr.hs.entrydsm.enitity.repository.ClubRepository;
-import kr.hs.entrydsm.service.club.ClubService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

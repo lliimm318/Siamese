@@ -1,13 +1,10 @@
 package kr.hs.entrydsm.service.post;
 
-import kr.hs.entrydsm.enitity.repository.ImageRepository;
 import kr.hs.entrydsm.enitity.repository.PostRepository;
 import kr.hs.entrydsm.payload.response.MainPostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 

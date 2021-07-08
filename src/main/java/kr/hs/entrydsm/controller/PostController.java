@@ -1,9 +1,9 @@
 package kr.hs.entrydsm.controller;
 
 import kr.hs.entrydsm.payload.response.*;
+import kr.hs.entrydsm.service.Recommend.RecommendService;
 import kr.hs.entrydsm.service.club.ClubPostService;
 import kr.hs.entrydsm.payload.request.PostRequest;
-import kr.hs.entrydsm.service.like.LikeService;
 import kr.hs.entrydsm.service.post.PostDetailService;
 import kr.hs.entrydsm.service.post.PostService;
 import kr.hs.entrydsm.security.JWTRequired;
@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -22,7 +24,7 @@ public class PostController {
     private final ClubPostService clubPostService;
     private final PostService postService;
     private final PostDetailService postDetailService;
-    private final LikeService likeService;
+    private final RecommendService recommendService;
     private final SearchService searchService;
     
     @JWTRequired
@@ -70,17 +72,10 @@ public class PostController {
 
     }
 
-    @PostMapping("/main/post/like/{postId}")
-    public void like(@PathVariable long postId) {
+    @GetMapping("/main/post/recommend")
+    public List<RecommendResponse> entryPost() {
 
-        likeService.createLike(postId);
-
-    }
-
-    @GetMapping("/main/post/best")
-    public List<RecommendResponse> bestPost() {
-
-        return likeService.bestPostList();
+        return recommendService.bestPostList();
 
     } 
     

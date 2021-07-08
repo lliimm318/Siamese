@@ -1,12 +1,10 @@
-package kr.hs.entrydsm.service.like;
+package kr.hs.entrydsm.service.Recommend;
 
 import kr.hs.entrydsm.payload.response.RecommendResponse;
 
 import java.util.List;
 
-public interface LikeService {
-
-    void createLike(long postId);
+public interface RecommendService {
 
     List<RecommendResponse> bestPostList();
 

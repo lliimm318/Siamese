@@ -16,6 +16,7 @@ import kr.hs.entrydsm.enitity.Image;
 import kr.hs.entrydsm.enitity.repository.AdminImageRepository;
 import kr.hs.entrydsm.enitity.repository.BannerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

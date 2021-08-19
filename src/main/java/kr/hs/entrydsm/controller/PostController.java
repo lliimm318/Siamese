@@ -29,7 +29,7 @@ public class PostController {
     
     @JWTRequired
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/post")
+    @PostMapping("/admin/post")
     public void createPost(@Valid @RequestBody PostRequest postRequest) {
         clubPostService.createPost(postRequest);
     }

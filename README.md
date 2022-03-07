@@ -79,9 +79,9 @@ scr
 | GitHub                                         | 역할               | 이름             | 설명                                                         |
 | ---------------------------------------------- | ------------------ | ---------------- | ------------------------------------------------------------ |
 | [강석진](https://github.com/panleeee)          | 멘토               | DSM 1기 - 강석진 | 프로젝트 관리 및 멘토링을 도와주셨습니다.                    |
-| [Joonmo](https://github.com/engolder)          | 멘토               | DSM 3기 - 연준모 | 프로젝트 관리 및 멘토링을 도와주셨습니다.                    |
-| [_uchanlee](https://github.com/woochanleee)    | 프론트엔드 웹앱    | DSM 5기 - 이우찬 | INIT 프론트엔드 개발을 담당하였습니다.                       |
-| [Jeong woo yeong](https://github.com/o-ozogie) | 백엔드, 프론트엔드 | DSM 5기 - 정우영 | INIT 어드민 인프라, 백엔드 개발 및 CMS 개발을 담당하였습니다. |
+| [연준모](https://github.com/engolder)          | 멘토               | DSM 3기 - 연준모 | 프로젝트 관리 및 멘토링을 도와주셨습니다.                    |
+| [이우찬](https://github.com/woochanleee)    | 프론트엔드 웹앱    | DSM 5기 - 이우찬 | INIT 프론트엔드 개발을 담당하였습니다.                       |
+| [정우영](https://github.com/o-ozogie) | 백엔드, 프론트엔드 | DSM 5기 - 정우영 | INIT 어드민 인프라, 백엔드 개발 및 CMS 개발을 담당하였습니다. |
 | [임서영](https://github.com/lliimm318)         | 백엔드             | DSM 6기 - 임서영 | INIT 백엔드 개발을 담당하였습니다.                           |
 
 

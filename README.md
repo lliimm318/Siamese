@@ -25,7 +25,11 @@
 
 #### Skills
 
-JAVA, Spring boot, Spring Data JPA, MySQL, Github Actions,  Docker, Swarmpit
+Language - JAVA
+Framework - Spring boot
+Library - Spring Data JPA
+DataBase - MySQL
+Infra - Github Actions,  Docker, Swarmpit
 
 
 

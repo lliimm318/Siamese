@@ -25,7 +25,7 @@
 
 #### Skills
 
-Language - JAVA,
+Language - JAVA
 Framework - Spring boot
 Library - Spring Data JPA
 DataBase - MySQL

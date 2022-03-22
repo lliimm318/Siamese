@@ -19,13 +19,13 @@
 
 ## 프로젝트 소개
 
-### INIT
+**INIT**
 
 대덕소프트웨어마이스터고등학교에 내에서의 활동을 외부 사람들에게 공유하는 커뮤니티 웹 / 앱
 
-#### Skills
+**Skills**
 
-Language - JAVA
+Language - Java
 Framework - Spring boot
 Library - Spring Data JPA
 DataBase - MySQL
